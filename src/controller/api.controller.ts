@@ -64,6 +64,7 @@ export class APIController {
     const note = this.ctx.request.body;
     console.log(note);
     this.noteService.post(note);
+    return true;
   }
 
   @Get('/note/get_all')
@@ -88,6 +89,7 @@ export class APIController {
   async comment_post() {
     const comment = this.ctx.request.body;
     this.commentService.post(comment);
+  
   }
 
   @Get('/comment/select')
