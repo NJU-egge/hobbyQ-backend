@@ -27,3 +27,9 @@ export interface IComment {
   comment: string;
   username: string;
 }
+
+export interface IHot {
+  hobbyQName: string;
+  hot: number;
+  username: string;
+}

@@ -19,6 +19,9 @@ export class APIController {
   @Inject()
   commentService;
 
+  @Inject()
+  hotService;
+
   @Post('/user/register')
   async user_register(): Promise<boolean> {
     const user = this.ctx.request.body;
@@ -94,5 +97,14 @@ export class APIController {
 
     console.log(this.commentService.select(req));
     return this.commentService.select(req);
+  }
+
+  @Get('/hot/select')
+
+  async hot_select() {
+    const req = this.ctx.request.query;
+    console.log(req);
+    console.log(this.hotService.select(req));
+    return this.hotService.select(req);
   }
 }

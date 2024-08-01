@@ -17,7 +17,7 @@ export class HobbyQService {
 
     if(!this.hobbyQData.some(user => user.hobbyQName === e.hobbyQName)){
       this.hobbyQData.push(e);
-      writeFileSync("./src/service/hobbyQData.json", JSON.stringify(this.hobbyQData));
+      writeFileSync("./src/service/hobbyQData.json", JSON.stringify(this.hobbyQData, null, 2));
       console.log("兴趣圈数据添加成功！");
       
     }

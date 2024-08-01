@@ -17,7 +17,7 @@ export class UserService {
 
     if(!this.userData.some(user => user.username === e.username)){
       this.userData.push(e);
-      writeFileSync("./src/service/userData.json", JSON.stringify(this.userData));
+      writeFileSync("./src/service/userData.json", JSON.stringify(this.userData, null, 2));
       console.log("用户数据添加成功！用户名" + e.username + "，密码：" + e.password);
       return true;
     }

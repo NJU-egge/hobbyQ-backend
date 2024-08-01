@@ -1,23 +1,41 @@
 import { Provide, Scope, ScopeEnum } from "@midwayjs/core";
 import { writeFileSync, readFileSync} from "fs";
-import { INote } from "../interface";
+import { INote, IHot } from "../interface";
 
 @Scope(ScopeEnum.Singleton)
 @Provide('noteService')
 export class NoteService {
   private noteData: INote[] = [];
-
+  private hotData: IHot[] = [];
   //
   // inser(e): 
   // 
   post(e: INote){
     console.log('开始添加帖子：' + e.hobbyQName + "，标题：" + e.title + "，内容：" + e.note + "，发布者：" + e.username);
     this.noteData = JSON.parse(readFileSync("./src/service/noteData.json").toString());
+    this.hotData = JSON.parse(readFileSync("./src/service/hotData.json").toString());
     console.log("读取用户数据文件成功！");
 
+    let flag = false;
     
+    for(let i = 0; i < this.hotData.length; i++){
+      if(this.hotData[i].hobbyQName == e.hobbyQName && this.hotData[i].username == e.username){
+        this.hotData[i].hot += 2;
+        flag = true;
+      } 
+    }
+    if(!flag){
+      let hot: IHot = {
+        hobbyQName: e.hobbyQName,
+        hot: 2,
+        username: e.username,
+      }
+      this.hotData.push(hot);
+    }
+
     this.noteData.push(e);
-    writeFileSync("./src/service/noteData.json", JSON.stringify(this.noteData));
+    writeFileSync("./src/service/noteData.json", JSON.stringify(this.noteData, null, 2));
+    writeFileSync("./src/service/hotData.json", JSON.stringify(this.hotData, null, 2));
     console.log("数据添加成功！帖子：" + e.hobbyQName + "，标题：" + e.title + "，内容：" + e.note + "，发布者：" + e.username);
  
     
