@@ -1,29 +1,15 @@
-# my_midway_project
+# 兴趣圈hobbyQ 后端部分
 
-## QuickStart
+## 部署
 
-<!-- add docs here for user -->
-
-see [midway docs][midway] for more detail.
-
-### Development
+解压缩后，在终端打开文件夹，执行以下命令：
 
 ```bash
-$ npm i
-$ npm run dev
-$ open http://localhost:7001/
+$ pm2 start ./bootstrap.js --name hobbyQ-backend
 ```
+前端部分已经部署到github-pages
+可以打开浏览器访问 https://nju-egge.github.io/hobbyQ-frontend/#/ 进行验收。
 
-### Deploy
+## 联系我
 
-```bash
-$ npm start
-```
-
-### npm scripts
-
-- Use `npm run lint` to check code style.
-- Use `npm test` to run unit test.
-
-
-[midway]: https://midwayjs.org
+如果项目验收有任何问题，请联系我：221900209@smail.nju.edu.cn
